@@ -11,5 +11,11 @@
   "baihao.map.xmap.name": "Xaero's Minimap",
   "baihao.map.xmap.description": "",
   "baihao.motd.select_map": "[Click to choose minimap]",
-  "baihao.motd.hide": "[Do not show again]"
+  "baihao.motd.hide": "[Do not show again]",
+  "item.baihao.very_harmful_axe": "Very Harmful Axe",
+  "item.baihao.harmful_sword": "Harmful Sword",
+  "item.baihao.vitality_netherite_boots": "Vitality Netherite Boots",
+  "item.baihao.vitality_netherite_chestplate": "Vitality Netherite Chestplate",
+  "item.baihao.vitality_netherite_helmet": "Vitality Netherite Helmet",
+  "item.baihao.vitality_netherite_leggings": "Vitality Netherite Leggings"
 }

@@ -8,6 +8,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
+import org.teacon.baihao.common.BHItems;
 
 @Mod(Baihao.MODID)
 public class Baihao {
@@ -17,6 +18,7 @@ public class Baihao {
     
     public Baihao(IEventBus modEventBus, ModContainer modContainer) {
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
+        BHItems.register(modEventBus);
     }
 
 }
