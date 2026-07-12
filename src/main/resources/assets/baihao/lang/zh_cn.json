@@ -11,5 +11,11 @@
   "baihao.map.xmap.name": "Xaero 小地图",
   "baihao.map.xmap.description": "",
   "baihao.motd.select_map": "[点此选择小地图]",
-  "baihao.motd.hide": "[不再显示]"
+  "baihao.motd.hide": "[不再显示]",
+  "item.baihao.very_harmful_axe": "很痛的斧",
+  "item.baihao.harmful_sword": "有点痛的剑",
+  "item.baihao.vitality_netherite_boots": "活力下界合金靴子",
+  "item.baihao.vitality_netherite_chestplate": "活力下界合金胸甲",
+  "item.baihao.vitality_netherite_helmet": "活力下界合金头盔",
+  "item.baihao.vitality_netherite_leggings": "活力下界合金护腿"
 }
