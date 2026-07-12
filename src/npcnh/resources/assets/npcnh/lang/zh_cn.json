@@ -1,0 +1,16 @@
+{
+  "itemGroup.npcnh": "非玩家角色：不困难",
+
+  "item.npcnh.exhibition_entity_editor": "展示实体编辑器",
+  "item.npcnh.exhibition_humanoid": "展示假人",
+  "entity.npcnh.exhibition_humanoid": "展示假人",
+
+  "tooltip.npcnh.exhibition_entity_editor1": "[右键] 实体：绑定并编辑实体",
+  "tooltip.npcnh.exhibition_entity_editor2": "[Shift] + [右键] 实体：绑定实体",
+  "tooltip.npcnh.exhibition_entity_editor3": "[Shift] + [左键] 实体：删除实体",
+  "tooltip.npcnh.exhibition_entity_editor4": "[右键]：编辑绑定实体",
+  "tooltip.npcnh.exhibition_entity_editor5": "[Shift] + [右键]：解除绑定实体",
+
+  "tooltip.npcnh.exhibition_entity_spawner1": "[Shift] + [右键] 实体：复制节点树信息",
+  "tooltip.npcnh.exhibition_entity_spawner2": "[Shift] + [右键] 空气：删除存储的节点树信息"
+}

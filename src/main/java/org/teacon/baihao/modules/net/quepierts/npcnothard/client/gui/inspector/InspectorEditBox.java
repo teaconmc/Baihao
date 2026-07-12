@@ -1,0 +1,93 @@
+package org.teacon.baihao.modules.net.quepierts.npcnothard.client.gui.inspector;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.network.chat.Component;
+import org.jspecify.annotations.NonNull;
+import org.teacon.baihao.modules.net.quepierts.npcnothard.client.gui.widget.TextField;
+import org.teacon.baihao.modules.net.quepierts.npcnothard.inspection.Duplicatable;
+import org.teacon.baihao.modules.net.quepierts.npcnothard.inspection.property.Property;
+
+public class InspectorEditBox extends InspectorModificationWidget<String> {
+    private final TextField editBox;
+
+    public InspectorEditBox(Component message, Property<String> property) {
+        super(36, message, property);
+
+        this.editBox = new TextField(Minecraft.getInstance().font, 4, 16, 84, 20, message);
+        this.editBox.setMaxLength(256);
+        this.editBox.setValue(property.get(), false);
+        this.editBox.setConfirm(s -> {
+            property.set(s);
+            return true;
+        });
+    }
+
+    @Override
+    public void render(@NonNull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick, boolean hovered) {
+        Font font = Minecraft.getInstance().font;
+        graphics.text(font, this.message, 0, 4, 0xffffffff);
+
+        final var width = this.getWidth();
+        graphics.fill(0, 16, width, 16 + this.editBox.getHeight(), 0x88000000);
+        if (hovered && mouseY >= 16) {
+            graphics.outline(0, 16, width, this.editBox.getHeight(), 0xffffffff);
+        } else if (this.isFocused()) {
+            graphics.outline(0, 16, width, this.editBox.getHeight(), 0xffbbbbff);
+        } else {
+            graphics.outline(0, 16, width, this.editBox.getHeight(), 0x40ffffff);
+        }
+        this.editBox.extractRenderState(graphics, mouseX, mouseY, partialTick);
+    }
+
+    @Override
+    public void setFocused(boolean focused) {
+        super.setFocused(focused);
+        this.editBox.setFocused(focused);
+    }
+
+    @Override
+    public void onMousePressed(final MouseButtonEvent event, final boolean doubleClick) {
+        this.editBox.mouseClicked(event, doubleClick);
+    }
+
+    @Override
+    public void onMouseReleased(final MouseButtonEvent event) {
+        this.editBox.mouseReleased(event);
+    }
+
+    @Override
+    public boolean onKeyPressed(final KeyEvent event) {
+        return this.editBox.keyPressed(event);
+    }
+
+    @Override
+    public boolean onKeyReleased(final KeyEvent event) {
+        return this.editBox.keyReleased(event);
+    }
+
+    @Override
+    public boolean charTyped(final CharacterEvent event) {
+        return this.editBox.charTyped(event);
+    }
+
+    @Override
+    public void resize(final int width) {
+        super.resize(width);
+        this.editBox.setX(4);
+        this.editBox.setWidth(width - 12);
+    }
+
+    @Override
+    public void paste(final @NonNull Duplicatable copy) {
+        if (copy.getClass() == InspectorEditBox.class) {
+            final var box = (InspectorEditBox) copy;
+            this.editBox.setValue(box.editBox.getValue(), false);
+            this.property.set(box.editBox.getValue());
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "values": [
+    {
+      "id": "npcnh:exhibition_humanoid",
+      "required": false
+    }
+  ],
+  "replace": false
+}

@@ -44,6 +44,9 @@ sourceSets.main.resources {
     // AAAPW Cogito Filter
     srcDir('src/aaapw_cogito_filter/resources')
 
+    // NPC Not Hard
+    srcDir('src/npcnh/resources')
+
     // Exclude common development only resources from finalized outputs
     exclude("**/*.bbmodel") // BlockBench project files
     exclude("src/generated/**/.cache") // datagen cache files

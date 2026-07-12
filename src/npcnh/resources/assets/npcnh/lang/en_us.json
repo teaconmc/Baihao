@@ -1,0 +1,16 @@
+{
+  "itemGroup.npcnh": "NPC: Not Hard",
+
+  "item.npcnh.exhibition_entity_editor": "Exhibition Entity Editor",
+  "item.npcnh.exhibition_humanoid": "Exhibition Humanoid",
+  "entity.npcnh.exhibition_humanoid": "Exhibition Humanoid",
+
+  "tooltip.npcnh.exhibition_entity_editor1": "[Right Click] with Entity: Bind and edit the entity",
+  "tooltip.npcnh.exhibition_entity_editor2": "[Shift] + [Right Click] with Entity: Bind the entity",
+  "tooltip.npcnh.exhibition_entity_editor3": "[Shift] + [Left Click] with Entity: Discard the entity",
+  "tooltip.npcnh.exhibition_entity_editor4": "[Right Click]: Edit the bound entity",
+  "tooltip.npcnh.exhibition_entity_editor5": "[Shift] + [Right Click]: Unbound the entity",
+
+  "tooltip.npcnh.exhibition_entity_spawner1": "[Shift] + [Right Click] with Entity: Copy node tree configuration",
+  "tooltip.npcnh.exhibition_entity_spawner2": "[Shift] + [Right Click]: Delete stored configuration"
+}
