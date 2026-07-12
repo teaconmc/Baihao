@@ -201,6 +201,8 @@ tasks.register('fetch2026Dependencies', Download) {
     }
     src(links)
     dest(layout.projectDirectory.dir('libs'))
+    onlyIfModified true
+    overwrite false
 }
 
 tasks.register('fetch2026TeamWorks', Download) {
@@ -214,6 +216,8 @@ tasks.register('fetch2026TeamWorks', Download) {
     }
     src(links)
     dest(layout.projectDirectory.dir('libs'))
+    onlyIfModified true
+    overwrite false
 }
 
 // 每次构建前，都需要跑这个任务，下载全部 TeaCon 2026 报名作品及前置。
