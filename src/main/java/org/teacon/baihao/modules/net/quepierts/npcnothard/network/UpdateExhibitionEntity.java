@@ -53,10 +53,6 @@ public record UpdateExhibitionEntity(
                 return;
             }
 
-            if ((!player.permissions().hasPermission(Permissions.COMMANDS_ADMIN))) {
-                return;
-            }
-
             exhibition.update(manager());
 
         });
