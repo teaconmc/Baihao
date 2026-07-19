@@ -23,31 +23,38 @@ public class InteractNode extends ExhibitionNode {
     public static final ContextKey<InteractNode> UNIQUE_KEY = InteractNode.createUniqueKey("interact");
 
     public static final MapCodec<InteractNode> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            CommandNode.CODEC.codec().listOf(2, 2).fieldOf("commands").forGetter(InteractNode::getChildren)
+            CommandNode.CODEC.codec().listOf(2, 2).fieldOf("commands").forGetter(InteractNode::getChildren),
+            FacingPlayerNode.CODEC.codec().optionalFieldOf("facing", null).forGetter(InteractNode::getFacingPlayer)
     ).apply(instance, InteractNode::new));
 
     public static final StreamCodec<ByteBuf, InteractNode> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.collection(ArrayList::new, CommandNode.STREAM_CODEC),
             InteractNode::getChildren,
+            FacingPlayerNode.STREAM_CODEC,
+            InteractNode::getFacingPlayer,
             InteractNode::new
     );
 
     private final CommandNode left;
     private final CommandNode right;
+    private final FacingPlayerNode facing;
 
     public InteractNode() {
         this.left   = new CommandNode("left_click");
         this.right  = new CommandNode("right_click");
+        this.facing = new FacingPlayerNode();
     }
 
-    public InteractNode(CommandNode left, CommandNode right) {
-        this.left = left;
-        this.right = right;
+    public InteractNode(CommandNode left, CommandNode right, FacingPlayerNode facing) {
+        this.left   = left;
+        this.right  = right;
+        this.facing = facing;
     }
 
-    public InteractNode(final List<CommandNode> nodes) {
-        this.left = nodes.get(0);
-        this.right = nodes.get(1);
+    public InteractNode(final List<CommandNode> nodes, final @Nullable FacingPlayerNode facing) {
+        this.left   = nodes.get(0);
+        this.right  = nodes.get(1);
+        this.facing = facing == null ? new FacingPlayerNode() : facing;
     }
 
     @Override
@@ -64,7 +71,8 @@ public class InteractNode extends ExhibitionNode {
     public ExhibitionNode duplicate() {
         return new InteractNode(
                 this.left.duplicate(),
-                this.right.duplicate()
+                this.right.duplicate(),
+                this.facing.duplicate()
         );
     }
 
@@ -77,6 +85,7 @@ public class InteractNode extends ExhibitionNode {
         final var node = (InteractNode) copy;
         this.left.paste(node.left);
         this.right.paste(node.right);
+        this.facing.paste(node.facing);
     }
 
     @Override
@@ -86,11 +95,15 @@ public class InteractNode extends ExhibitionNode {
 
     @Override
     public Collection<HierarchyEntry> children() {
-        return List.of(this.left, this.right);
+        return List.of(this.left, this.right, this.facing);
     }
 
     public List<CommandNode> getChildren() {
         return List.of(this.left, this.right);
+    }
+
+    public FacingPlayerNode getFacingPlayer() {
+        return this.facing;
     }
 
     public CommandNode getLeft() {

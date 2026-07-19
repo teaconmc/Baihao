@@ -30,14 +30,9 @@ public class EntityNode extends ExhibitionNode implements Inspectable {
     public static final ContextKey<EntityNode> UNIQUE_KEY = EntityNode.createUniqueKey("entity");
 
     public static final MapCodec<EntityNode> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            Codec.FLOAT.fieldOf("x").forGetter(EntityNode::getX),
-            Codec.FLOAT.fieldOf("y").forGetter(EntityNode::getY),
-            Codec.FLOAT.fieldOf("z").forGetter(EntityNode::getZ),
-            Codec.FLOAT.fieldOf("yaw").forGetter(EntityNode::getYaw),
-            Codec.FLOAT.fieldOf("pitch").forGetter(EntityNode::getPitch),
             Codec.STRING.optionalFieldOf("name", "").forGetter(EntityNode::getName),
             Codec.BOOL.optionalFieldOf("showName", false).forGetter(EntityNode::isShowName)
-    ).apply(instance, EntityNode::new));
+    ).apply(instance, (name, show) -> new EntityNode(0, 0, 0, 0, 0, name, show)));
 
     public static final StreamCodec<ByteBuf, EntityNode> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.FLOAT,

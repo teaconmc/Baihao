@@ -5,7 +5,7 @@
   "mixins": [
   ],
   "client": [
-    "client.HumanoidModelMixin"
+    "client.PlayerModelMixin"
   ],
   "injectors": {
     "defaultRequire": 1
