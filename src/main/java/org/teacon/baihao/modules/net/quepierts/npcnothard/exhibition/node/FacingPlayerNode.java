@@ -27,6 +27,8 @@ public class FacingPlayerNode extends ExhibitionNode implements Inspectable {
 
     public static final ContextKey<FacingPlayerNode> UNIQUE_KEY = ExhibitionNode.createUniqueKey("facing");
 
+    public static final FacingPlayerNode DEFAULT = new FacingPlayerNode();
+
     public static final MapCodec<FacingPlayerNode> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.BOOL.optionalFieldOf("enabled", false).forGetter(FacingPlayerNode::isEnabled),
             Codec.BOOL.optionalFieldOf("localOnly", false).forGetter(FacingPlayerNode::isLocalOnly),

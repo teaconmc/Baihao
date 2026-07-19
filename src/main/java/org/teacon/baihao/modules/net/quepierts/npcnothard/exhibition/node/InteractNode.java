@@ -24,7 +24,7 @@ public class InteractNode extends ExhibitionNode {
 
     public static final MapCodec<InteractNode> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             CommandNode.CODEC.codec().listOf(2, 2).fieldOf("commands").forGetter(InteractNode::getChildren),
-            FacingPlayerNode.CODEC.codec().optionalFieldOf("facing", null).forGetter(InteractNode::getFacingPlayer)
+            FacingPlayerNode.CODEC.codec().optionalFieldOf("facing", FacingPlayerNode.DEFAULT).forGetter(InteractNode::getFacingPlayer)
     ).apply(instance, InteractNode::new));
 
     public static final StreamCodec<ByteBuf, InteractNode> STREAM_CODEC = StreamCodec.composite(
@@ -51,10 +51,10 @@ public class InteractNode extends ExhibitionNode {
         this.facing = facing;
     }
 
-    public InteractNode(final List<CommandNode> nodes, final @Nullable FacingPlayerNode facing) {
+    public InteractNode(final List<CommandNode> nodes, final FacingPlayerNode facing) {
         this.left   = nodes.get(0);
         this.right  = nodes.get(1);
-        this.facing = facing == null ? new FacingPlayerNode() : facing;
+        this.facing = facing == FacingPlayerNode.DEFAULT ? new FacingPlayerNode() : facing;
     }
 
     @Override
