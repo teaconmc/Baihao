@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "org.teacon.baihao.mixins",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "TaterLibLite_Constraint_Builder_Mixin",
+    "TaterLibLite_Constraint_Evaluator_Mixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
