@@ -3,6 +3,7 @@
   "package": "org.teacon.baihao.mixins",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "ChunkMapMixin",
     "TaterLibLite_Constraint_Builder_Mixin",
     "TaterLibLite_Constraint_Evaluator_Mixin"
   ],
