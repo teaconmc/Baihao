@@ -6,7 +6,9 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -21,6 +23,8 @@ import org.teacon.baihao.Baihao;
 public final class BHItems {
     static final DeferredRegister.Items BAIHAO_ITEMS = DeferredRegister.createItems(Baihao.MODID);
     public static final DeferredItem<Item> VERY_HARMFUL_AXE = BAIHAO_ITEMS.registerSimpleItem("very_harmful_axe", properties -> properties.axe(ToolMaterial.NETHERITE, 996, -3.0f).durability(1).fireResistant());
+    public static final DeferredItem<Item> NEW_LAVA_BUCKET = BAIHAO_ITEMS.registerItem("new_lava_bucket",
+            properties -> new BucketItem(BHFluids.NEW_LAVA.get(), properties.craftRemainder(Items.BUCKET).stacksTo(1)));
     public static final DeferredItem<Item> HARMFUL_SWORD = BAIHAO_ITEMS.registerSimpleItem("harmful_sword", properties -> properties.sword(ToolMaterial.NETHERITE, 75, -2.4f));
     public static final DeferredItem<Item> VITALITY_HELMET = BAIHAO_ITEMS.registerSimpleItem("vitality_netherite_helmet", properties -> properties
             .durability(ArmorType.HELMET.getDurability(ArmorMaterials.NETHERITE.durability()))
