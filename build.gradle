@@ -192,7 +192,7 @@ idea {
 }
 
 tasks.register('fetch2026Dependencies', Download) {
-    def parsed = new JsonSlurper().parse(new URI('https://biluochun.teacon.cn/api/v1/contest/4/deps').toURL())
+    def parsed = new JsonSlurper().parse(new URI('https://biluochun.teacon.cn/api/v1/contest/4/deps').toURL(), 'UTF-8')
     def links = []
     for (e in parsed) {
         if (e.review_status == 1 && e.type != -1) {
@@ -206,7 +206,7 @@ tasks.register('fetch2026Dependencies', Download) {
 }
 
 tasks.register('fetch2026TeamWorks', Download) {
-    def parsed = new JsonSlurper().parse(new URI('https://biluochun.teacon.cn/api/v1/contest/4/teams').toURL())
+    def parsed = new JsonSlurper().parse(new URI('https://biluochun.teacon.cn/api/v1/contest/4/teams').toURL(), 'UTF-8')
     def links = []
     for (e in parsed) {
         if (e.test_version && e.ready) {
